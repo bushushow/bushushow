@@ -35,14 +35,14 @@ CONFIG = {
 
 PAD = 28
 LABEL_X = PAD + 16
-VALUE_X = PAD + 132
-ROW_H = 30
+VALUE_X = PAD + 112
+ROW_H = 27
 FONT = "ui-monospace,SFMono-Regular,Menlo,Consolas,monospace"
 
 
-def build(cfg=CONFIG, out="assets/card.svg", width=700):
+def build(cfg=CONFIG, out="assets/card.svg", width=560, fs=12):
     rows = cfg["rows"]
-    head_h = 116
+    head_h = 108
     h = head_h + len(rows) * ROW_H + 74
     p = []
     a = p.append
@@ -77,7 +77,7 @@ def build(cfg=CONFIG, out="assets/card.svg", width=700):
       f'<animate attributeName="opacity" values="0;1" dur="0.3s" begin="0s" fill="freeze"/></text>')
 
     # isim
-    a(f'<text x="{PAD}" y="94" font-family="{FONT}" font-size="24" font-weight="700" '
+    a(f'<text x="{PAD}" y="94" font-family="{FONT}" font-size="21" font-weight="700" '
       f'fill="url(#cg)" filter="url(#cglow)" opacity="0">{html.escape(cfg["title"])}'
       f'<animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.35s" fill="freeze"/></text>')
     a(f'<text x="{PAD}" y="112" font-family="{FONT}" font-size="12" fill="{THEME["muted"]}" opacity="0">'
@@ -95,9 +95,9 @@ def build(cfg=CONFIG, out="assets/card.svg", width=700):
         a(f'<g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" '
           f'begin="{begin}s" fill="freeze"/>'
           f'<circle cx="{PAD + 4}" cy="{y - 5}" r="2.6" fill="{THEME["hot"]}"/>'
-          f'<text x="{LABEL_X}" y="{y}" font-family="{FONT}" font-size="13" font-weight="600" '
+          f'<text x="{LABEL_X}" y="{y}" font-family="{FONT}" font-size="{fs}" font-weight="600" '
           f'fill="{THEME["glow"]}">{html.escape(label)}</text>'
-          f'<text x="{VALUE_X}" y="{y}" font-family="{FONT}" font-size="13" '
+          f'<text x="{VALUE_X}" y="{y}" font-family="{FONT}" font-size="{fs}" '
           f'fill="{THEME["text"]}">{html.escape(value)}</text></g>')
         y += ROW_H
 

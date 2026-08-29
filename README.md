@@ -1,22 +1,23 @@
 <div align="center">
 
-<img src="assets/portrait.svg" alt="ASCII portrait" width="820" />
+<table>
+<tr>
+<td><img src="assets/portrait.svg" alt="ASCII portrait" width="320" /></td>
+<td><img src="assets/card.svg" alt="whoami" width="520" /></td>
+</tr>
+</table>
 
 <br />
 
-<img src="assets/card.svg" alt="whoami" width="820" />
-
-<br /><br />
-
 `busra@hacettepe:~$ cat stack.toml`
 
-<img src="assets/stack.svg" alt="tech stack" width="820" />
+<img src="assets/stack.svg" alt="tech stack" width="850" />
 
 <br /><br />
 
 `busra@hacettepe:~$ git log --graph --all`
 
-<img src="assets/heatmap.svg" alt="contribution heatmap" width="820" />
+<img src="assets/heatmap.svg" alt="contribution heatmap" width="850" />
 
 <br /><br />
 
