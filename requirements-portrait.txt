@@ -1,0 +1,6 @@
+# sadece ASCII portreyi yeniden uretmek icin gerekli (yerelde calistir)
+pillow>=10.0
+numpy>=1.26
+opencv-python-headless>=4.9
+rembg>=2.0
+onnxruntime>=1.17
