@@ -1,21 +1,21 @@
-name: refresh profile heatmap
+name: refresh profile svgs
 
 on:
   schedule:
-    # her gun 03:17 UTC (Turkiye saatiyle 06:17)
+    # her gun 03:17 UTC (Turkiye saatiyle 06:17) isi haritasini yeniler
     - cron: "17 3 * * *"
   workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - "scripts/make_heatmap.py"
+      - "scripts/**"
       - ".github/workflows/refresh.yml"
 
 permissions:
   contents: write
 
 jobs:
-  heatmap:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,7 +27,13 @@ jobs:
       - name: Install deps
         run: pip install -r requirements.txt
 
-      - name: Rebuild heatmap
+      - name: Rebuild info card
+        run: python scripts/make_card.py
+
+      - name: Rebuild tech stack strip
+        run: python scripts/make_stack.py
+
+      - name: Rebuild contribution heatmap
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/make_heatmap.py --user ${{ github.repository_owner }} --out assets/heatmap.svg
@@ -36,9 +42,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [[ -n "$(git status --porcelain assets/heatmap.svg)" ]]; then
-            git add assets/heatmap.svg
-            git commit -m "chore: refresh contribution heatmap"
+          if [[ -n "$(git status --porcelain assets/)" ]]; then
+            git add assets/
+            git commit -m "chore: rebuild profile svgs"
             git push
           else
             echo "degisiklik yok"
