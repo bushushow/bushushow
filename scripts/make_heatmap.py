@@ -264,15 +264,20 @@ def main():
     if args.demo:
         days = demo_days()
     else:
-        token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+        # Once profil sayfasi okunur: ziyaretcilerin gordugu grafigin aynisi.
+        # "Include private contributions on my profile" acik oldugunda gizli
+        # repolardaki katkilar da bu sayfada gorundugu icin buraya yansir.
+        # API yolu ise repo yetkisiyle calistigi icin sadece herkese acik
+        # katkilari gorur; o yuzden yalnizca yedek olarak kullaniliyor.
         days = None
-        if token:
-            try:
-                days = fetch_days_api(args.user, token)
-            except Exception as e:  # noqa: BLE001
-                print(f"GraphQL basarisiz ({e}), HTML kazimaya geciliyor.")
-        if not days:
+        try:
             days = fetch_days(args.user)
+        except Exception as e:  # noqa: BLE001
+            print(f"Profil sayfasi okunamadi ({e}), API'ye geciliyor.")
+        if not days:
+            token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+            if token:
+                days = fetch_days_api(args.user, token)
 
     build_svg(days, args.user, args.out)
 
