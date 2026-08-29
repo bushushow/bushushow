@@ -28,7 +28,7 @@ CONFIG = {
         ("experience", "AI Intern @ Microsoft  ·  AI Intern @ Huawei"),
         ("community", "Huawei Student Developer Campus Ambassador"),
         ("building", "ML models, agentic apps, hackathon prototypes"),
-        ("location", "Ankara, Turkiye"),
+        ("location", "Bursa, Turkiye"),
     ],
     "footer": "always compiling something",
 }
