@@ -17,7 +17,7 @@ THEME = {
 }
 
 CONFIG = {
-    "user": "busra@hacettepe",
+    "user": "bushushow",
     "title": "Busra Ozlem Koc",
     "subtitle": "github.com/bushushow",
     "rows": [
