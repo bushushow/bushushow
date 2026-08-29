@@ -28,7 +28,7 @@ GROUPS = [
 ]
 
 PAD = 26
-TOP = 62
+TOP = 48
 LABEL_W = 108
 PILL_H = 26
 PILL_GAP = 8
@@ -76,8 +76,6 @@ def build(groups=GROUPS, out="assets/stack.svg", width=820):
         a(f'<circle cx="{22 + i * 16}" cy="20" r="5" fill="{c}" opacity="0.85"/>')
     a(f'<text x="{width - 16}" y="24" text-anchor="end" font-family="{FONT}" font-size="11" '
       f'fill="{THEME["glow"]}" opacity="0.6">stack --list</text>')
-    a(f'<text x="{PAD}" y="46" font-family="{FONT}" font-size="13" fill="{THEME["muted"]}">'
-      f'<tspan fill="{THEME["hot"]}">$</tspan> cat stack.toml</text>')
 
     i = 0
     for label, placed, label_y in layout:

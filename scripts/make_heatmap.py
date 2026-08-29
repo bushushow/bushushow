@@ -194,7 +194,7 @@ def build_svg(days, user, out, weeks_back=53):
     for i, c in enumerate([THEME["hot"], THEME["glow"], THEME["mid"]]):
         a(f'<circle cx="{22 + i * 16}" cy="20" r="5" fill="{c}" opacity="0.85"/>')
     a(f'<text x="{width - 16}" y="24" text-anchor="end" font-family="{FONT}" font-size="11" '
-      f'fill="{THEME["glow"]}" opacity="0.6">git log --graph</text>')
+      f'fill="{THEME["glow"]}" opacity="0.6">contributions</text>')
 
     a(f'<text x="{PAD}" y="50" font-family="{FONT}" font-size="13" fill="{THEME["muted"]}">'
       f'<tspan fill="{THEME["hot"]}">{html.escape(user)}</tspan>'
