@@ -41,7 +41,11 @@ altinda "Read and write permissions" secili olmali.
 | Renkler | her scriptin basindaki `THEME` / `SCALE` |
 | LinkedIn ve mail linkleri | `README.md` en altta `YOUR-LINKEDIN`, `YOUR-MAIL` |
 
-Duzenledikten sonra ilgili scripti calistirip cikan SVG'yi commit'le:
+En kolay yol: dosyayi github.com uzerinde duzenle. Repoda dosyaya gir, sag ustteki
+kalem simgesine bas, degistir, "Commit changes" de. GitHub Actions degisikligi gorup
+SVG'leri kendisi yeniden uretip commit'liyor; bir dakika sonra profilin guncellenmis olur.
+
+Bilgisayarindan yapmak istersen scripti kendin calistirip cikan SVG'yi commit'le:
 
 ```bash
 pip install -r requirements.txt
