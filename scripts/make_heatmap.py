@@ -219,21 +219,27 @@ def build_svg(days, user, out, weeks_back=53):
 
     max_diag = n_cols + 7
     span = 5.5  # saniye
+
+    # Capraz acilma efektinde ayni kosegendeki kareler zaten ayni anda
+    # beliriyor. Her kareye ayri <animate> koymak yerine kosegeni tek bir
+    # <g> icinde toplayip ona tek animasyon veriyoruz: ~367 animasyon
+    # yerine ~60. Gorsel sonuc birebir ayni.
+    diagonals = {}
     for col in sorted(cols):
         for row, (d, count, lvl) in cols[col].items():
-            lv = level_of(count, lvl, thresholds)
-            x = left + col * (CELL + GAP)
-            y = TOP + row * (CELL + GAP)
-            begin = round((col + row) / max_diag * span, 3)
-            fill = SCALE[lv]
-            # Tek bir opacity animasyonu: geometri (rx) animasyonu ve kare
-            # basina blur filtresi tarayiciyi her karede yeniden cizmeye
-            # zorladigi icin kaldirildi.
+            diagonals.setdefault(col + row, []).append(
+                (left + col * (CELL + GAP), TOP + row * (CELL + GAP),
+                 SCALE[level_of(count, lvl, thresholds)], d, count))
+
+    for diag in sorted(diagonals):
+        begin = round(diag / max_diag * span, 3)
+        a(f'<g opacity="0"><animate attributeName="opacity" values="0;1" '
+          f'dur="0.5s" begin="{begin}s" fill="freeze"/>')
+        for x, y, fill, d, count in diagonals[diag]:
             a(f'<rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" rx="2.5" '
-              f'fill="{fill}" opacity="0">'
-              f'<title>{d.isoformat()}: {count} contributions</title>'
-              f'<animate attributeName="opacity" values="0;1" dur="0.5s" '
-              f'begin="{begin}s" fill="freeze"/></rect>')
+              f'fill="{fill}">'
+              f'<title>{d.isoformat()}: {count} contributions</title></rect>')
+        a("</g>")
 
     # lejant
     ly = TOP + grid_h + 26
