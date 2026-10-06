@@ -226,13 +226,13 @@ def build_svg(days, user, out, weeks_back=53):
             y = TOP + row * (CELL + GAP)
             begin = round((col + row) / max_diag * span, 3)
             fill = SCALE[lv]
-            extra = ' filter="url(#hglow)"' if lv == 4 else ""
+            # Tek bir opacity animasyonu: geometri (rx) animasyonu ve kare
+            # basina blur filtresi tarayiciyi her karede yeniden cizmeye
+            # zorladigi icin kaldirildi.
             a(f'<rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" rx="2.5" '
-              f'fill="{fill}"{extra} opacity="0">'
+              f'fill="{fill}" opacity="0">'
               f'<title>{d.isoformat()}: {count} contributions</title>'
               f'<animate attributeName="opacity" values="0;1" dur="0.5s" '
-              f'begin="{begin}s" fill="freeze"/>'
-              f'<animate attributeName="rx" values="5.5;2.5" dur="0.5s" '
               f'begin="{begin}s" fill="freeze"/></rect>')
 
     # lejant

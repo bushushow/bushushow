@@ -153,7 +153,7 @@ def build_svg(lines, out, char_w=8.4, line_h=14.0, font_size=13, pad=26,
         parts.append(
             f'<rect x="{pad}" y="{y0 + rows * line_h - 10}" width="9" height="14" '
             f'fill="{THEME["hot"]}">'
-            f'<animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>'
+            f'<animate attributeName="opacity" values="1;0;1" dur="1s" begin="{round(total, 2)}s" repeatCount="6" fill="freeze"/>'
             "</rect>"
         )
     parts.append("</svg>")

@@ -100,7 +100,7 @@ def build(groups=GROUPS, out="assets/stack.svg", width=820):
     a(f'<rect x="{PAD}" y="{height - 10}" width="120" height="2" rx="1" fill="url(#sg)" '
       f'filter="url(#sglow)" opacity="0.75">'
       f'<animate attributeName="x" values="{PAD};{width - PAD - 120};{PAD}" dur="6s" '
-      f'begin="{round(0.35 + i * 0.07 + 0.3, 2)}s" repeatCount="indefinite" '
+      f'begin="{round(0.35 + i * 0.07 + 0.3, 2)}s" repeatCount="2" fill="freeze" '
       f'calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.5;1"/></rect>')
     a("</svg>")
 
