@@ -91,8 +91,8 @@ def build(cfg=CONFIG, out="assets/card.svg", width=560, fs=12):
 
     y = head_h + 34
     for i, (label, value) in enumerate(rows):
-        begin = round(0.85 + i * 0.13, 3)
-        a(f'<g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" '
+        begin = round(1.0 + i * 0.3, 3)
+        a(f'<g opacity="0"><animate attributeName="opacity" values="0;1" dur="0.5s" '
           f'begin="{begin}s" fill="freeze"/>'
           f'<circle cx="{PAD + 4}" cy="{y - 5}" r="2.6" fill="{THEME["hot"]}"/>'
           f'<text x="{LABEL_X}" y="{y}" font-family="{FONT}" font-size="{fs}" font-weight="600" '
@@ -107,12 +107,12 @@ def build(cfg=CONFIG, out="assets/card.svg", width=560, fs=12):
                            "#c084fc", "#d8b4fe", "#f0abfc"]):
         a(f'<rect x="{PAD + i * 22}" y="{swatch_y}" width="16" height="16" rx="3" fill="{c}" opacity="0">'
           f'<animate attributeName="opacity" values="0;1" dur="0.3s" '
-          f'begin="{round(0.85 + len(rows) * 0.13 + i * 0.06, 2)}s" fill="freeze"/></rect>')
+          f'begin="{round(1.0 + len(rows) * 0.3 + i * 0.09, 2)}s" fill="freeze"/></rect>')
 
     a(f'<text x="{width - PAD}" y="{swatch_y + 13}" text-anchor="end" font-family="{FONT}" '
       f'font-size="12" fill="{THEME["muted"]}" opacity="0">{html.escape(cfg["footer"])}'
       f'<animate attributeName="opacity" values="0;0.85" dur="0.6s" '
-      f'begin="{round(1.2 + len(rows) * 0.13, 2)}s" fill="freeze"/></text>')
+      f'begin="{round(1.6 + len(rows) * 0.3, 2)}s" fill="freeze"/></text>')
 
     a("</svg>")
     with open(out, "w", encoding="utf-8") as f:

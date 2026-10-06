@@ -82,9 +82,9 @@ def build(groups=GROUPS, out="assets/stack.svg", width=820):
         a(f'<text x="{PAD}" y="{label_y + 18}" font-family="{FONT}" font-size="12" '
           f'font-weight="600" fill="{THEME["glow"]}" opacity="0">{html.escape(label)}'
           f'<animate attributeName="opacity" values="0;0.95" dur="0.4s" '
-          f'begin="{round(0.2 + i * 0.05, 2)}s" fill="freeze"/></text>')
+          f'begin="{round(0.3 + i * 0.11, 2)}s" fill="freeze"/></text>')
         for it, x, y, w in placed:
-            begin = round(0.35 + i * 0.07, 3)
+            begin = round(0.5 + i * 0.16, 3)
             i += 1
             a(f'<g opacity="0" transform="translate(0,6)">'
               f'<animate attributeName="opacity" values="0;1" dur="0.4s" begin="{begin}s" fill="freeze"/>'
@@ -100,7 +100,7 @@ def build(groups=GROUPS, out="assets/stack.svg", width=820):
     a(f'<rect x="{PAD}" y="{height - 10}" width="120" height="2" rx="1" fill="url(#sg)" '
       f'filter="url(#sglow)" opacity="0.75">'
       f'<animate attributeName="x" values="{PAD};{width - PAD - 120};{PAD}" dur="6s" '
-      f'begin="{round(0.35 + i * 0.07 + 0.3, 2)}s" repeatCount="2" fill="freeze" '
+      f'begin="{round(0.5 + i * 0.16 + 0.4, 2)}s" repeatCount="2" fill="freeze" '
       f'calcMode="spline" keySplines="0.4 0 0.2 1;0.4 0 0.2 1" keyTimes="0;0.5;1"/></rect>')
     a("</svg>")
 

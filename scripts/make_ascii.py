@@ -93,7 +93,7 @@ def to_ascii(rgba, cols=74, char_aspect=0.60, invert=True, alpha_thresh=40,
 
 
 def build_svg(lines, out, char_w=8.4, line_h=14.0, font_size=13, pad=26,
-              row_delay=0.055, cursor=True):
+              row_delay=0.13, cursor=True):
     cols = max(len(l) for l in lines)
     rows = len(lines)
     w = int(cols * char_w + pad * 2)
@@ -143,7 +143,7 @@ def build_svg(lines, out, char_w=8.4, line_h=14.0, font_size=13, pad=26,
             f'<text x="{pad}" y="{y}" xml:space="preserve" opacity="0">'
             # bosluklar SVG'de sikistirilmasin diye kirilmaz bosluk kullaniliyor
             f'{html.escape(line).replace(" ", chr(160))}'
-            f'<animate attributeName="opacity" values="0;1" dur="0.45s" '
+            f'<animate attributeName="opacity" values="0;1" dur="0.55s" '
             f'begin="{begin}s" fill="freeze"/>'
             "</text>"
         )

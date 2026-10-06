@@ -218,7 +218,7 @@ def build_svg(days, user, out, weeks_back=53):
           f'fill="{THEME["muted"]}" opacity="0.75">{lab}</text>')
 
     max_diag = n_cols + 7
-    span = 2.4  # saniye
+    span = 5.5  # saniye
     for col in sorted(cols):
         for row, (d, count, lvl) in cols[col].items():
             lv = level_of(count, lvl, thresholds)
